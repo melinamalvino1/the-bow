@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="THE BOW — Club de música electrónica sobre la Costanera Norte de Buenos Aires. House, techno y line-ups internacionales frente al río.">
+<meta property="og:title" content="THE BOW — Club Nocturno, Buenos Aires">
+<meta property="og:description" content="House, techno y line-ups internacionales sobre el río. Punta Carrasco, Costanera Norte.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:type" content="website">
+<title>THE BOW — Club Nocturno, Buenos Aires</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ TOKENS — 📝 PERSONALIZAR paleta si hace falta ajustarla con fotos reales ============ */
+  :root{
+    --bg:#06060a;
+    --bg-soft:#0c0c14;
+    --red:#b91c1c;
+    --red-deep:#3d0a0a;
+    --red-bright:#ef4444;
+    --ink:#f4f2f7;
+    --ink-dim:#aba5b8;
+    --line:rgba(244,242,247,0.12);
+    --font-display:'Space Grotesk',sans-serif;
+    --font-mono:'Space Mono',monospace;
+    --font-serif:'Playfair Display',serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 650px at 12% 8%, rgba(239,68,68,.13), transparent 60%),
+      radial-gradient(ellipse 800px 700px at 90% 28%, rgba(180,20,20,.10), transparent 60%),
+      radial-gradient(ellipse 700px 600px at 20% 70%, rgba(120,15,15,.11), transparent 60%),
+      radial-gradient(ellipse 900px 700px at 95% 92%, rgba(239,68,68,.09), transparent 60%),
+      var(--bg);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:var(--font-display);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  section{position:relative;}
+
+  /* ============ GRAIN — textura cinematográfica fija sobre toda la página ============ */
+  .grain{
+    position:fixed;inset:0;z-index:999;pointer-events:none;
+    opacity:0.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    animation:grainShift 1s steps(4) infinite;
+  }
+  @keyframes grainShift{
+    0%{transform:translate(0,0);} 25%{transform:translate(-2%,1%);}
+    50%{transform:translate(1%,-2%);} 75%{transform:translate(-1%,2%);} 100%{transform:translate(0,0);}
+  }
+
+  /* ============ NAV ============ */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:24px 48px;
+    transition:background .4s ease, padding .4s ease, backdrop-filter .4s ease;
+  }
+  nav.scrolled{
+    padding:16px 48px;
+    background:rgba(6,6,10,0.75);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-logo{font-weight:700;letter-spacing:0.08em;font-size:1.1rem;}
+  .nav-links{display:flex;align-items:center;gap:36px;font-size:.85rem;letter-spacing:.04em;}
+  .nav-links a{opacity:.8;transition:opacity .25s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    border:1px solid #ef4444;padding:10px 22px;border-radius:2px;
+    font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;
+    transition:background .3s, color .3s;
+  }
+  .nav-cta:hover{background:#ef4444;color:#06060a;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:300;}
+  .burger span{width:24px;height:2px;background:var(--ink);transition:.3s;}
+
+  @media (max-width:860px){
+    nav{padding:20px 24px;}
+    .nav-links{
+      position:fixed;top:0;right:-100%;height:100vh;width:78%;
+      background:var(--bg-soft);flex-direction:column;justify-content:center;
+      gap:32px;transition:right .4s ease;font-size:1.1rem;
+    }
+    .nav-links.open{right:0;}
+    .burger{display:flex;}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    height:100vh;min-height:680px;
+    display:flex;align-items:flex-end;
+    position:relative;overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background:#050304; /* fallback si la foto no carga */
+  }
+  .hero-photo{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center center;z-index:1;
+    transform:scale(1);
+    animation:kenburns 22s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns{
+    0%{transform:scale(1) translateY(0);}
+    100%{transform:scale(1.05) translateY(-1%);}
+  }
+  .hero-vignette{
+    position:absolute;inset:0;z-index:2;
+    background:linear-gradient(180deg, rgba(5,3,4,.55) 0%, rgba(5,3,4,0) 30%, rgba(5,3,4,0) 60%, rgba(5,3,4,.85) 100%);
+  }
+  .hero-content{
+    position:relative;z-index:5;width:100%;
+    padding:0 24px 90px;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+    text-align:center;
+  }
+  @keyframes riseIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+  .btn-primary{
+    background:var(--red-bright);color:#06060a;
+    padding:16px 30px;font-family:var(--font-mono);font-size:.85rem;
+    letter-spacing:.05em;border-radius:2px;
+    transition:transform .25s, box-shadow .25s;
+    display:inline-block;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px -10px rgba(239,68,68,.55);}
+  .btn-ghost{
+    border:1px solid var(--line);padding:16px 30px;font-family:var(--font-mono);
+    font-size:.85rem;letter-spacing:.05em;border-radius:2px;
+    transition:border-color .25s, background .25s;
+  }
+  .btn-ghost:hover{border-color:var(--red-bright);background:rgba(239,68,68,.08);}
+
+  /* ============ ARC DIVIDER — firma visual entre secciones ============ */
+  .arc-divider{width:100%;height:36px;overflow:hidden;position:relative;}
+  .arc-divider svg{width:100%;height:100%;}
+  .arc-divider path{
+    stroke:url(#arcGrad);stroke-width:1.5;fill:none;
+    stroke-dasharray:1400;stroke-dashoffset:1400;
+    transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1);
+  }
+  .arc-divider.in-view path{stroke-dashoffset:0;}
+
+  /* ============ SECTION SHARED ============ */
+  .section{padding:80px 48px;}
+  .section-inner{max-width:1180px;margin:0 auto;}
+  .eyebrow{
+    font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;
+    color:var(--red-bright);margin-bottom:18px;display:block;
+  }
+  .h2{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:600;line-height:1.05;letter-spacing:-0.01em;}
+
+  /* ============ EVENTOS — listado con buscador y filtro de mes ============ */
+  .events-controls{
+    display:flex;gap:14px;flex-wrap:wrap;margin:50px 0 10px;
+  }
+  .search-input, .filter-select{
+    background:var(--bg);border:1px solid var(--line);color:var(--ink);
+    font-family:var(--font-mono);font-size:.85rem;padding:13px 18px;
+    border-radius:2px;outline:none;
+  }
+  .search-input{flex:1;min-width:200px;}
+  .search-input::placeholder{color:var(--ink-dim);}
+  .search-input:focus, .filter-select:focus{border-color:#ef4444;}
+  .filter-select{cursor:pointer;}
+
+  .events-list{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:10px;
+  }
+  .event-card{
+    background:var(--bg-soft);border-radius:4px;overflow:hidden;
+    border:1px solid var(--line);display:flex;flex-direction:column;
+  }
+  .event-card-thumb-btn{
+    background:none;border:none;padding:0;margin:0;cursor:pointer;
+    display:block;width:100%;aspect-ratio:4/5;overflow:hidden;
+  }
+  .event-card-thumb{
+    width:100%;height:100%;display:block;object-fit:cover;
+    transition:transform .4s;
+  }
+  .event-card-thumb-btn:hover .event-card-thumb{transform:scale(1.05);}
+  .event-card-body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1;}
+  .event-card-date{
+    font-family:var(--font-mono);font-size:.85rem;font-weight:700;
+    color:#ef4444;letter-spacing:.02em;
+  }
+  .event-card-date .slash{color:var(--ink-dim);font-weight:400;}
+  .event-card-body h3{font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.01em;}
+  .event-card-lineup{
+    font-family:var(--font-mono);font-size:.74rem;color:var(--ink-dim);
+    line-height:1.5;flex:1;
+  }
+  .event-card-btn{
+    display:block;text-align:center;margin-top:8px;
+    padding:12px 16px;font-size:.74rem;
+  }
+  @media (max-width:1024px){.events-list{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.events-list{grid-template-columns:1fr;}}
+
+  .lightbox{
+    position:fixed;inset:0;z-index:300;background:rgba(5,3,4,.92);
+    display:none;align-items:center;justify-content:center;padding:40px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{
+    max-width:min(88vw,440px);max-height:88vh;object-fit:contain;
+    border-radius:4px;box-shadow:0 30px 70px rgba(0,0,0,.6);
+  }
+  .lightbox-close{
+    position:absolute;top:24px;right:32px;background:none;border:none;
+    color:var(--ink);font-size:2.2rem;line-height:1;cursor:pointer;
+    font-family:var(--font-mono);
+  }
+  .btn-sm{padding:11px 20px;font-size:.78rem;}
+  .events-empty{display:none;color:var(--ink-dim);font-family:var(--font-mono);font-size:.85rem;padding:40px 0;text-align:center;}
+  .events-empty.show{display:block;}
+
+  /* ============ EXPERIENCIA ============ */
+  .experience-section{position:relative;overflow:hidden;padding-top:40px;padding-bottom:40px;}
+  .experience-deco{
+    position:absolute;inset:0;width:100%;height:100%;z-index:0;
+    pointer-events:none;
+  }
+  .experience-deco circle{fill:none;stroke:rgba(239,68,68,.4);stroke-width:1.5;}
+  .experience-deco circle.dashed{stroke-dasharray:6 8;stroke:rgba(255,255,255,.18);}
+  .experience-deco line{stroke:rgba(255,255,255,.14);stroke-width:1;}
+  .experience-deco .plus{stroke:rgba(239,68,68,.5);stroke-width:2;}
+  .experience{display:grid;grid-template-columns:1.3fr .7fr;gap:90px;align-items:center;position:relative;z-index:1;}
+  .experience h2{margin-bottom:28px;font-size:clamp(2.4rem,5vw,3.8rem);}
+  .experience p{color:var(--ink-dim);line-height:1.85;margin:28px 0 48px;max-width:480px;font-size:1.05rem;}
+  .experience-visual-wrap{position:relative;max-width:380px;margin-left:auto;}
+  .experience-visual{
+    aspect-ratio:4/5;border-radius:6px;
+    background:#0a0a10;
+    position:relative;overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 40px 70px -30px rgba(0,0,0,.7);
+  }
+  .experience-visual video{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .experience-visual::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg, rgba(5,3,4,.35) 0%, transparent 25%, transparent 70%, rgba(5,3,4,.55) 100%);
+  }
+  .exp-tag{
+    position:absolute;top:18px;left:18px;z-index:2;
+    display:flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;
+    color:var(--ink);background:rgba(5,3,4,.55);
+    padding:7px 12px;border-radius:2px;border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(4px);
+  }
+  .exp-tag .dot{width:6px;height:6px;border-radius:50%;background:#ef4444;
+    box-shadow:0 0 6px #ef4444;animation:livePulse 1.6s infinite;}
+  @keyframes livePulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+  @media (max-width:860px){.experience{grid-template-columns:1fr;}}
+
+  /* ============ UBICACIÓN ============ */
+  .location{background:rgba(12,12,20,.65);}
+  .location-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
+  .location-info{max-width:560px;}
+  .location-info p.location-subtitle{
+    color:#ef4444;font-weight:700;font-size:1.15rem;
+    margin:10px 0 0;letter-spacing:.01em;
+  }
+  .location-info p{color:var(--ink-dim);margin:18px 0 30px;max-width:420px;line-height:1.7;}
+  .location-visual{
+    text-decoration:none;cursor:pointer;
+    aspect-ratio:4/3;border-radius:6px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(239,68,68,.16), transparent 65%),
+      #0a0a10;
+    border:1px solid var(--line);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+  }
+  .location-map-svg{
+    position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  }
+  .location-map-svg .street{stroke:rgba(255,255,255,.14);stroke-width:1;fill:none;}
+  .location-map-svg .street.faint{stroke:rgba(255,255,255,.07);}
+  .location-map-svg .river{stroke:rgba(239,68,68,.3);stroke-width:2.5;fill:none;}
+  .location-pin{position:relative;width:18px;height:18px;z-index:1;}
+  .pin-dot{
+    position:absolute;inset:0;border-radius:50%;background:#ef4444;
+    box-shadow:0 0 12px #ef4444;
+  }
+  .pin-ring{
+    position:absolute;inset:0;border-radius:50%;border:2px solid #ef4444;
+    animation:pinPing 2.4s ease-out infinite;
+  }
+  .pin-ring.delay{animation-delay:1.2s;}
+  @keyframes pinPing{
+    0%{transform:scale(1);opacity:.8;}
+    100%{transform:scale(5.5);opacity:0;}
+  }
+  .location-tag{
+    position:relative;z-index:1;
+    font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;
+    color:var(--ink-dim);
+  }
+  @media (max-width:860px){.location-grid{grid-template-columns:1fr;}}
+
+  /* ============ CTA FINAL ============ */
+  .cta-final{
+    text-align:center;padding:90px 48px;
+    background:radial-gradient(ellipse at 50% 0%, rgba(239,68,68,.28), transparent 60%);
+  }
+  .cta-final .h2{max-width:680px;margin:0 auto 34px;}
+
+  /* ============ FOOTER ============ */
+  footer{position:relative;overflow:hidden;}
+  .footer-deco{
+    position:absolute;inset:0;width:100%;height:100%;z-index:0;
+    pointer-events:none;
+  }
+  .footer-deco circle{fill:none;stroke:rgba(239,68,68,.4);stroke-width:1.5;}
+  .footer-deco circle.dashed{stroke-dasharray:6 8;stroke:rgba(255,255,255,.18);}
+  .footer-deco line{stroke:rgba(255,255,255,.14);stroke-width:1;}
+  .footer-deco .plus{stroke:rgba(239,68,68,.5);stroke-width:2;}
+  .footer-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:50px;
+    padding:90px 48px 60px;border-top:1px solid var(--line);
+    position:relative;z-index:1;
+  }
+  .footer-col h4{
+    font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:700;margin-bottom:18px;
+  }
+  .footer-col a{display:block;color:var(--ink-dim);margin-bottom:10px;
+    font-family:var(--font-mono);font-size:.85rem;transition:color .25s;}
+  .footer-col a:hover{color:var(--red-bright);}
+  .footer-col p{color:var(--ink-dim);font-size:.85rem;line-height:1.6;margin-bottom:20px;max-width:320px;}
+  .newsletter-form{display:flex;gap:10px;flex-wrap:wrap;}
+  .newsletter-form input{
+    flex:1;min-width:160px;background:var(--bg-soft);border:1px solid var(--line);
+    color:var(--ink);font-family:var(--font-mono);font-size:.85rem;
+    padding:13px 16px;border-radius:2px;outline:none;
+  }
+  .newsletter-form input:focus{border-color:#ef4444;}
+  .newsletter-form button{
+    background:#ef4444;color:#06060a;border:none;cursor:pointer;
+    font-family:var(--font-mono);font-size:.8rem;letter-spacing:.04em;
+    padding:13px 24px;border-radius:2px;transition:opacity .25s;
+  }
+  .newsletter-form button:hover{opacity:.85;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:16px;padding:28px 48px;
+    border-top:1px solid rgba(255,255,255,.18);
+    font-family:var(--font-mono);font-size:.75rem;color:var(--ink-dim);
+    position:relative;z-index:1;
+    background:var(--bg);
+  }
+  .footer-col .socials{
+    display:flex;align-items:center;gap:12px;
+    color:var(--ink) !important;transition:opacity .25s;
+    margin-top:6px;
+  }
+  .footer-col .socials:hover{opacity:.8;color:var(--ink) !important;}
+  .socials-label{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.03em;}
+  .socials-icon{
+    width:40px;height:40px;border-radius:50%;background:#fff;color:#0a0a10;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .socials-icon svg{width:20px;height:20px;}
+  .footer-bottom .credit a{color:var(--red-bright);}
+  .haus-logo{
+    font-family:var(--font-serif);font-style:italic;font-weight:400;
+    font-size:1.05rem;letter-spacing:.01em;
+  }
+  @media (max-width:860px){
+    .footer-grid{grid-template-columns:1fr;gap:40px;padding:70px 24px 40px;}
+    .footer-bottom{padding:24px;flex-direction:column;text-align:center;}
+  }
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav id="nav">
+  <div class="nav-logo">THE BOW</div>
+  <div class="nav-links" id="navLinks">
+    <a href="#evento">Próximo evento</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="https://linktr.ee/thebowclub" target="_blank" rel="noopener" class="nav-cta">Entradas</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <!-- Imagen hero generada con IA por la clienta -->
+  <picture>
+    <source media="(max-width: 768px)" srcset="/hero-mobile.jpg">
+    <img class="hero-photo" src="/hero-desktop.jpg" alt="THE BOW — Electronic Music Club, Buenos Aires">
+  </picture>
+  <div class="hero-vignette"></div>
+
+  <div class="hero-content">
+  </div>
+</section>
+
+<svg width="0" height="0" style="position:absolute;">
+  <defs>
+    <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b91c1c"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="arc-divider"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M 0 10 Q 600 60 1200 10"/></svg></div>
+
+<!-- ============ EVENTOS — 📝 PERSONALIZAR fechas, horarios y link de cada entrada ============ -->
+<section class="section" id="evento">
+  <div class="section-inner">
+    <h2 class="h2 reveal">Próximos eventos</h2>
+
+    <div class="events-controls reveal">
+      <input type="text" id="eventSearch" class="search-input" placeholder="Buscar por artista...">
+      <select id="monthFilter" class="filter-select">
+        <option value="all">Todos los meses</option>
+        <option value="06">Junio</option>
+        <option value="07">Julio</option>
+      </select>
+    </div>
+
+    <div class="events-list reveal" id="eventsList"></div>
+
+    <div class="events-empty" id="eventsEmpty">No encontramos eventos con esos filtros.</div>
+  </div>
+</section>
+
+<div class="arc-divider"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M 0 50 Q 600 0 1200 50"/></svg></div>
+
+<!-- ============ EXPERIENCIA ============ -->
+<section class="section experience-section" id="experiencia">
+  <svg class="experience-deco" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="120" cy="90" r="160" />
+    <circle cx="1080" cy="600" r="220" />
+    <circle cx="950" cy="80" r="70" />
+    <circle class="dashed" cx="200" cy="560" r="120" />
+    <line x1="0" y1="350" x2="1200" y2="240" />
+    <line x1="0" y1="500" x2="1200" y2="600" />
+    <g class="plus" stroke-linecap="round">
+      <line x1="980" y1="350" x2="980" y2="380" />
+      <line x1="965" y1="365" x2="995" y2="365" />
+    </g>
+    <g class="plus" stroke-linecap="round">
+      <line x1="60" y1="280" x2="60" y2="304" />
+      <line x1="48" y1="292" x2="72" y2="292" />
+    </g>
+  </svg>
+  <div class="section-inner experience">
+    <div>
+      <h2 class="h2 reveal">La experiencia</h2>
+      <p class="reveal">THE BOW, House music club. Un selecto ambiente y la mejor música electrónica son las premisas para este ciclo que presenta grandes artistas nacionales e internacionales.</p>
+    </div>
+    <div class="experience-visual-wrap reveal">
+      <div class="experience-visual">
+        <div class="exp-tag"><span class="dot"></span>THE BOW</div>
+        <video autoplay muted loop playsinline preload="auto" poster="/experience-poster.jpg" src="/experience-video.mp4"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="arc-divider"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M 0 50 Q 600 0 1200 50"/></svg></div>
+
+<!-- ============ UBICACIÓN — 📝 PERSONALIZAR dirección exacta si cambia ============ -->
+<section class="section location" id="ubicacion">
+  <div class="location-grid">
+    <div class="location-info reveal">
+      <h2 class="h2">Ubicación</h2>
+      <p class="location-subtitle">Costanera Norte, Punta Carrasco.</p>
+      <p>Av. Costanera Rafael Obligado 2221, dentro del predio de Punta Carrasco. Estacionamiento disponible.</p>
+      <a href="https://www.google.com/maps/place/the+bow/data=!4m2!3m1!1s0x95bcb56b9885d753:0x1113bd203c05a896?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener" class="btn-ghost">Cómo llegar →</a>
+    </div>
+    <a class="location-visual reveal" href="https://www.google.com/maps/place/the+bow/data=!4m2!3m1!1s0x95bcb56b9885d753:0x1113bd203c05a896?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener">
+      <svg class="location-map-svg" viewBox="0 0 400 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="street faint" d="M0 40 H400"/>
+        <path class="street" d="M0 95 H400"/>
+        <path class="street faint" d="M0 150 H400"/>
+        <path class="street" d="M0 205 H400"/>
+        <path class="street faint" d="M0 260 H400"/>
+        <path class="street" d="M55 0 V300"/>
+        <path class="street faint" d="M120 0 V300"/>
+        <path class="street" d="M195 0 V300"/>
+        <path class="street faint" d="M255 0 V300"/>
+        <path class="street" d="M330 0 V300"/>
+        <path class="river" d="M340 -10 C 300 70, 365 150, 310 230 C 290 270, 320 290, 305 320"/>
+      </svg>
+      <div class="location-pin">
+        <span class="pin-ring"></span>
+        <span class="pin-ring delay"></span>
+        <span class="pin-dot"></span>
+      </div>
+      <div class="location-tag">PUNTA CARRASCO · CABA</div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final">
+  <h2 class="h2 reveal">La noche empieza acá.</h2>
+  <a href="#evento" class="btn-primary">Ver próximo evento</a>
+</section>
+
+<footer>
+  <svg class="footer-deco" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="1080" cy="60" r="170" />
+    <circle cx="80" cy="430" r="200" />
+    <circle class="dashed" cx="1000" cy="420" r="90" />
+    <line x1="0" y1="120" x2="1200" y2="40" />
+    <line x1="0" y1="380" x2="1200" y2="440" />
+    <g class="plus" stroke-linecap="round">
+      <line x1="200" y1="80" x2="200" y2="104" />
+      <line x1="188" y1="92" x2="212" y2="92" />
+    </g>
+    <g class="plus" stroke-linecap="round">
+      <line x1="650" y1="450" x2="650" y2="474" />
+      <line x1="638" y1="462" x2="662" y2="462" />
+    </g>
+  </svg>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="https://wearebombo.com" target="_blank" rel="noopener">Descargá la app Bombo</a>
+      <!-- 📝 PERSONALIZAR: confirmar/actualizar el link de la carpeta de fotos -->
+      <a href="https://drive.google.com/drive/folders/1XTBpQcZgGSW_Yug0AYUZiAZfrfu-ZLNM" target="_blank" rel="noopener">Mirá todas las fotos</a>
+      <a class="socials" href="https://www.instagram.com/clubthebowba/" target="_blank" rel="noopener" aria-label="Instagram">
+        <span class="socials-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </span>
+        <span class="socials-label">Seguinos en Instagram</span>
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Sumate a la lista</h4>
+      <!-- 📝 Netlify Forms: activar en el panel de Netlify una vez deployado -->
+      <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+        <input type="hidden" name="form-name" value="newsletter">
+        <input type="email" name="email" placeholder="Tu email" required>
+        <button type="submit">Sumarme</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="copyright">© THE BOW. Todos los derechos reservados.</div>
+    <div class="credit">by <a href="#" target="_blank" class="haus-logo">HAUS.</a></div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" type="button">&times;</button>
+  <img id="lightboxImg" src="" alt="Flyer ampliado">
+</div>
+
+<script>
+  // Filtro de eventos: búsqueda por artista + mes
+  const eventSearch = document.getElementById('eventSearch');
+  const monthFilter = document.getElementById('monthFilter');
+  const eventRows = document.querySelectorAll('.event-card');
+  const eventsEmpty = document.getElementById('eventsEmpty');
+
+  function applyEventFilters(){
+    const q = eventSearch.value.trim().toLowerCase();
+    const month = monthFilter.value;
+    let visibleCount = 0;
+    eventRows.forEach(row => {
+      const matchesSearch = !q || row.dataset.name.includes(q);
+      const matchesMonth = month === 'all' || row.dataset.month === month;
+      const show = matchesSearch && matchesMonth;
+      row.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+    eventsEmpty.classList.toggle('show', visibleCount === 0);
+  }
+  eventSearch.addEventListener('input', applyEventFilters);
+  monthFilter.addEventListener('change', applyEventFilters);
+
+  // Lightbox: ver flyer completo
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  document.querySelectorAll('.event-card-thumb-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const img = btn.querySelector('.event-card-thumb');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+  function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .arc-divider').forEach(el => observer.observe(el));
+</script>
+
+
+<script>
+// ============ CARGA DINÁMICA DE EVENTOS ============
+(function(){
+  fetch('/eventos/eventos.json')
+    .then(r => r.json())
+    .then(data => {
+      const list = document.getElementById('eventsList');
+      if (!data.eventos || !data.eventos.length) return;
+      list.innerHTML = data.eventos.map(e => `
+        <div class="event-card" data-name="${e.titulo.toLowerCase()} ${e.artistas.toLowerCase()}" data-month="${e.mes_num}">
+          <button class="event-card-thumb-btn" type="button">
+            <img class="event-card-thumb" src="${e.flyer}" alt="${e.titulo} — flyer">
+          </button>
+          <div class="event-card-body">
+            <div class="event-card-date">${e.dia}<span class="slash">/</span>${e.mes}</div>
+            <h3>${e.titulo}</h3>
+            <div class="event-card-lineup">${e.artistas}${e.horario ? ' · ' + e.horario : ''}</div>
+            <a href="${e.entradas}" target="_blank" rel="noopener" class="btn-primary event-card-btn">Comprar entrada</a>
+          </div>
+        </div>
+      `).join('\n');
+      // re-init lightbox for dynamically created cards
+      document.querySelectorAll('.event-card-thumb-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const img = btn.querySelector('.event-card-thumb');
+          if(img){ document.getElementById('lightboxImg').src = img.src; document.getElementById('lightbox').classList.add('open'); }
+        });
+      });
+    })
+    .catch(err => console.warn('No se pudieron cargar los eventos:', err));
+})();
+</script>
+</body>
+</html>
