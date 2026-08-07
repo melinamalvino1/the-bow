@@ -1,48 +1,14 @@
 {
   "eventos": [
     {
-      "titulo": "The Hook",
-      "artistas": "Mariano Mellino · Jamie Stevens · Julian Rocchi",
-      "fecha": "19/06/2026",
-      "dia": "19",
-      "mes": "JUN",
-      "mes_num": "06",
-      "horario": "23:59hs",
-      "flyer": "/eventos/imagenes/flyer-1906.jpg",
-      "entradas": "https://linktr.ee/thebowclub"
-    },
-    {
-      "titulo": "Emi Galván",
-      "artistas": "All Night Long",
-      "fecha": "20/06/2026",
-      "dia": "20",
-      "mes": "JUN",
-      "mes_num": "06",
-      "horario": "23:59 a 07:00hs",
-      "flyer": "/eventos/imagenes/flyer-2006.jpg",
-      "entradas": "https://linktr.ee/thebowclub"
-    },
-    {
-      "titulo": "Kamilo Sanclemente",
-      "artistas": "Extended Set",
-      "fecha": "11/07/2026",
-      "dia": "11",
-      "mes": "JUL",
-      "mes_num": "07",
-      "horario": "",
-      "flyer": "/eventos/imagenes/flyer-1107.jpg",
-      "entradas": "https://linktr.ee/thebowclub"
-    },
-    {
-      "titulo": "Henry Saiz — XX",
-      "artistas": "Natura Isonoris · 20 años (2006—2026)",
-      "fecha": "18/07/2026",
-      "dia": "18",
-      "mes": "JUL",
-      "mes_num": "07",
-      "horario": "23:59 a 07:00hs",
-      "flyer": "/eventos/imagenes/flyer-1807.jpg",
-      "entradas": "https://linktr.ee/thebowclub"
+      "titulo": "Briado Crew",
+      "artistas": "+ Special Guest",
+      "fecha": "08/08/2026",
+      "dia": "8",
+      "mes": "AGO",
+      "mes_num": "08",
+      "flyer": "/eventos/imagenes/brigado-crew-08-08-2026.png",
+      "entradas": "https://wearebombo.app.link/k4YS650Mp5b"
     }
   ]
 }
