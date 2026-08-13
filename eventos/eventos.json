@@ -22,14 +22,15 @@
       "fecha": "29/08/2026"
     },
     {
-      "titulo": "Emiliano Demarco",
-      "artistas": "Extended Set",
-      "fecha": "05/09/2026",
-      "dia": "5",
-      "mes": "SEPT",
-      "mes_num": "9",
       "flyer": "/eventos/imagenes/emiliano-demarco-5-9-2026.jpg",
-      "entradas": "https://wearebombo.app.link/JJ1GHYwOp5b"
+      "mes_num": "9",
+      "sold_out": true,
+      "artistas": "Extended Set",
+      "titulo": "Emiliano Demarco",
+      "mes": "SEPT",
+      "dia": "5",
+      "entradas": "https://wearebombo.app.link/JJ1GHYwOp5b",
+      "fecha": "05/09/2026"
     }
   ]
 }
