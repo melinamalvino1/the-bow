@@ -1,16 +1,6 @@
 {
   "eventos": [
     {
-      "titulo": "Briado Crew",
-      "artistas": "+ Special Guest",
-      "fecha": "08/08/2026",
-      "dia": "8",
-      "mes": "AGO",
-      "mes_num": "08",
-      "flyer": "/eventos/imagenes/brigado-crew-08-08-2026.png",
-      "entradas": "https://wearebombo.app.link/k4YS650Mp5b"
-    },
-    {
       "flyer": "/eventos/imagenes/emiliano-demarco-29-08-2026.jpg",
       "mes_num": "08",
       "sold_out": true,
@@ -31,6 +21,18 @@
       "dia": "5",
       "entradas": "https://wearebombo.app.link/JJ1GHYwOp5b",
       "fecha": "05/09/2026"
+    },
+    {
+      "flyer": "/eventos/imagenes/1080x1920.jpg",
+      "mes_num": "8",
+      "horario": "23:59 A 07:00",
+      "sold_out": true,
+      "artistas": "All Night Long",
+      "titulo": "Space 92",
+      "mes": "OCT",
+      "dia": "15",
+      "entradas": "https://wearebombo.app.link/rnIQOtBPz5b",
+      "fecha": "15/08/2026"
     }
   ]
 }
