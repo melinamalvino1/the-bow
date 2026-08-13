@@ -11,14 +11,15 @@
       "entradas": "https://wearebombo.app.link/k4YS650Mp5b"
     },
     {
-      "titulo": "Emiliano Demarco",
-      "artistas": "Extended Set",
-      "fecha": "29/08/2026",
-      "dia": "29",
-      "mes": "AGO",
-      "mes_num": "08",
       "flyer": "/eventos/imagenes/emiliano-demarco-29-08-2026.jpg",
-      "entradas": "SOLD OUT"
+      "mes_num": "08",
+      "sold_out": true,
+      "artistas": "Extended Set",
+      "titulo": "Emiliano Demarco",
+      "mes": "AGO",
+      "dia": "29",
+      "entradas": "https://wearebombo.app.link/CFjVOoWAy5b",
+      "fecha": "29/08/2026"
     },
     {
       "titulo": "Emiliano Demarco",
