@@ -1,5 +1,6 @@
 backend:
   name: git-gateway
+  repo: melinamalvino1/the-bow
   branch: main
 
 media_folder: "eventos/imagenes"
@@ -17,12 +18,13 @@ collections:
             label: "Eventos"
             widget: "list"
             fields:
-              - { name: "titulo",  label: "Título del evento",   widget: "string" }
-              - { name: "artistas", label: "Artistas / Line-up", widget: "string" }
-              - { name: "fecha",   label: "Fecha (DD/MM/AAAA)", widget: "string" }
-              - { name: "dia",     label: "Día (ej: 19)",        widget: "string" }
-              - { name: "mes",     label: "Mes abrev. (ej: JUN)", widget: "string" }
-              - { name: "mes_num", label: "Mes número (ej: 06)", widget: "string" }
-              - { name: "horario", label: "Horario (ej: 23:59 a 07:00hs)", widget: "string", required: false }
-              - { name: "flyer",   label: "Flyer del evento",    widget: "image" }
-              - { name: "entradas", label: "Link de entradas",   widget: "string" }
+              - { name: "titulo",   label: "Título del evento",    widget: "string" }
+              - { name: "artistas", label: "Artistas / Line-up",   widget: "string" }
+              - { name: "fecha",    label: "Fecha (DD/MM/AAAA)",   widget: "string" }
+              - { name: "dia",      label: "Día (ej: 19)",         widget: "string" }
+              - { name: "mes",      label: "Mes abrev. (ej: JUN)", widget: "string" }
+              - { name: "mes_num",  label: "Mes número (ej: 06)",  widget: "string" }
+              - { name: "horario",  label: "Horario (ej: 23:59 a 07:00hs)", widget: "string", required: false }
+              - { name: "flyer",    label: "Flyer del evento",     widget: "image" }
+              - { name: "entradas", label: "Link de entradas",     widget: "string" }
+              - { name: "sold_out", label: "Sold out",             widget: "boolean", default: false, required: false }

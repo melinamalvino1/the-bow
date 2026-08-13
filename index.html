@@ -208,6 +208,17 @@
     display:block;text-align:center;margin-top:8px;
     padding:12px 16px;font-size:.74rem;
   }
+  .event-card-btn--soldout{
+    background:transparent !important;
+    border:1px solid rgba(255,255,255,.25);
+    color:var(--ink-dim) !important;
+    cursor:pointer;
+    box-shadow:none !important;
+  }
+  .event-card-btn--soldout:hover{
+    border-color:var(--ink-dim);
+    transform:none !important;
+  }
   @media (max-width:1024px){.events-list{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:560px){.events-list{grid-template-columns:1fr;}}
 
@@ -651,7 +662,12 @@
     .then(data => {
       const list = document.getElementById('eventsList');
       if (!data.eventos || !data.eventos.length) return;
-      list.innerHTML = data.eventos.map(e => `
+      list.innerHTML = data.eventos.map(e => {
+        const soldOut = e.sold_out === true;
+        const btnHtml = soldOut
+          ? `<a href="${e.entradas}" target="_blank" rel="noopener" class="btn-primary event-card-btn event-card-btn--soldout">SOLD OUT</a>`
+          : `<a href="${e.entradas}" target="_blank" rel="noopener" class="btn-primary event-card-btn">Comprar entrada</a>`;
+        return `
         <div class="event-card" data-name="${e.titulo.toLowerCase()} ${e.artistas.toLowerCase()}" data-month="${e.mes_num}">
           <button class="event-card-thumb-btn" type="button">
             <img class="event-card-thumb" src="${e.flyer}" alt="${e.titulo} — flyer">
@@ -660,10 +676,10 @@
             <div class="event-card-date">${e.dia}<span class="slash">/</span>${e.mes}</div>
             <h3>${e.titulo}</h3>
             <div class="event-card-lineup">${e.artistas}${e.horario ? ' · ' + e.horario : ''}</div>
-            <a href="${e.entradas}" target="_blank" rel="noopener" class="btn-primary event-card-btn">Comprar entrada</a>
+            ${btnHtml}
           </div>
-        </div>
-      `).join('\n');
+        </div>`;
+      }).join('\n');
       // re-init lightbox for dynamically created cards
       document.querySelectorAll('.event-card-thumb-btn').forEach(btn => {
         btn.addEventListener('click', () => {
