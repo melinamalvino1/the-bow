@@ -1,17 +1,6 @@
 {
   "eventos": [
     {
-      "flyer": "/eventos/imagenes/emiliano-demarco-29-08-2026.jpg",
-      "mes_num": "08",
-      "sold_out": true,
-      "artistas": "Extended Set",
-      "titulo": "Emiliano Demarco",
-      "mes": "AGO",
-      "dia": "29",
-      "entradas": "https://wearebombo.app.link/CFjVOoWAy5b",
-      "fecha": "29/08/2026"
-    },
-    {
       "flyer": "/eventos/imagenes/emiliano-demarco-5-9-2026.jpg",
       "mes_num": "9",
       "sold_out": true,
@@ -33,6 +22,18 @@
       "dia": "16",
       "entradas": "https://wearebombo.app.link/smH6pNFnT5b",
       "fecha": "16/10/2026"
+    },
+    {
+      "flyer": "/eventos/imagenes/emi-antrim.png",
+      "mes_num": "11",
+      "horario": "23:59 A 07:00",
+      "sold_out": false,
+      "artistas": "OPEN CALL",
+      "titulo": "Emi Galván & Antrim",
+      "mes": "NOV",
+      "dia": "7",
+      "entradas": "https://wearebombo.app.link/1s6XZK9L65b",
+      "fecha": "7/11/2026"
     }
   ]
 }
