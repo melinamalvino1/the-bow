@@ -1,17 +1,6 @@
 {
   "eventos": [
     {
-      "flyer": "/eventos/imagenes/emiliano-demarco-5-9-2026.jpg",
-      "mes_num": "9",
-      "sold_out": true,
-      "artistas": "Extended Set",
-      "titulo": "Emiliano Demarco",
-      "mes": "SEPT",
-      "dia": "5",
-      "entradas": "https://wearebombo.app.link/JJ1GHYwOp5b",
-      "fecha": "05/09/2026"
-    },
-    {
       "flyer": "/eventos/imagenes/adap-2-8.png",
       "mes_num": "10",
       "horario": "25:39 A 07:00SH",
