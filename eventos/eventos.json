@@ -35,6 +35,18 @@
       "dia": "27",
       "entradas": "https://wearebombo.app.link/b6xPNb5iu6b",
       "fecha": "27/11/2026"
+    },
+    {
+      "flyer": "/eventos/imagenes/2-story-estatico.jpg",
+      "mes_num": "11",
+      "horario": "23:59 A 07:00",
+      "sold_out": false,
+      "artistas": "TBA",
+      "titulo": "POPOF ",
+      "mes": "NOV",
+      "dia": "21",
+      "entradas": "https://wearebombo.app.link/dpgDPqoVD6b",
+      "fecha": "21/11/2025"
     }
   ]
 }
