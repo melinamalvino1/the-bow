@@ -25,6 +25,18 @@
       "fecha": "7/11/2026"
     },
     {
+      "flyer": "/eventos/imagenes/history-8.png",
+      "mes_num": "2026",
+      "horario": "23:59 A 07:00",
+      "sold_out": false,
+      "artistas": "JUAN MANDIANES",
+      "titulo": "SCRIPT & BOB TOSH",
+      "mes": "NOV",
+      "dia": "14",
+      "entradas": "https://wearebombo.app.link/r5iYoACyF6b",
+      "fecha": "14/11/2026"
+    },
+    {
       "flyer": "/eventos/imagenes/2-story-estatico.jpg",
       "mes_num": "11",
       "horario": "23:59 A 07:00",
@@ -47,18 +59,6 @@
       "dia": "27",
       "entradas": "https://wearebombo.app.link/b6xPNb5iu6b",
       "fecha": "27/11/2026"
-    },
-    {
-      "flyer": "/eventos/imagenes/history-8.png",
-      "mes_num": "2026",
-      "horario": "23:59 A 07:00",
-      "sold_out": false,
-      "artistas": "JUAN MANDIANES",
-      "titulo": "SCRIPT & BOB TOSH",
-      "mes": "NOV",
-      "dia": "14",
-      "entradas": "https://wearebombo.app.link/r5iYoACyF6b",
-      "fecha": "14/11/2026"
     }
   ]
 }
