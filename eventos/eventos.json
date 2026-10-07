@@ -59,6 +59,18 @@
       "dia": "27",
       "entradas": "https://wearebombo.app.link/b6xPNb5iu6b",
       "fecha": "27/11/2026"
+    },
+    {
+      "flyer": "/eventos/imagenes/eze-ramirez-31.12-st.png",
+      "mes_num": "12",
+      "horario": "23:59 A 07:00HS",
+      "sold_out": false,
+      "artistas": "ALL NIGHT LONG",
+      "titulo": "EZE RAMIREZ",
+      "mes": "DIC",
+      "dia": "31",
+      "entradas": "https://wearebombo.app.link/4nzPLat406b",
+      "fecha": "31/12/2026"
     }
   ]
 }
