@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Política de privacidad de THE BOW — tratamiento de datos personales en clubthebow.com.">
+<link rel="canonical" href="https://clubthebow.com/politica-privacidad.html">
+<title>Política de privacidad — THE BOW</title>
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ TOKENS — 📝 PERSONALIZAR paleta si hace falta ajustarla con fotos reales ============ */
+  :root{
+    --bg:#06060a;
+    --bg-soft:#0c0c14;
+    --red:#b91c1c;
+    --red-deep:#3d0a0a;
+    --red-bright:#ef4444;
+    --ink:#f4f2f7;
+    --ink-dim:#aba5b8;
+    --line:rgba(244,242,247,0.12);
+    --font-display:'Space Grotesk',sans-serif;
+    --font-mono:'Space Mono',monospace;
+    --font-serif:'Playfair Display',serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 650px at 12% 8%, rgba(239,68,68,.13), transparent 60%),
+      radial-gradient(ellipse 800px 700px at 90% 28%, rgba(180,20,20,.10), transparent 60%),
+      radial-gradient(ellipse 700px 600px at 20% 70%, rgba(120,15,15,.11), transparent 60%),
+      radial-gradient(ellipse 900px 700px at 95% 92%, rgba(239,68,68,.09), transparent 60%),
+      var(--bg);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:var(--font-display);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  section{position:relative;}
+
+  /* ============ GRAIN — textura cinematográfica fija sobre toda la página ============ */
+  .grain{
+    position:fixed;inset:0;z-index:999;pointer-events:none;
+    opacity:0.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    animation:grainShift 1s steps(4) infinite;
+  }
+  @keyframes grainShift{
+    0%{transform:translate(0,0);} 25%{transform:translate(-2%,1%);}
+    50%{transform:translate(1%,-2%);} 75%{transform:translate(-1%,2%);} 100%{transform:translate(0,0);}
+  }
+
+  /* ============ NAV ============ */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:24px 48px;
+    transition:background .4s ease, padding .4s ease, backdrop-filter .4s ease;
+  }
+  nav.scrolled{
+    padding:16px 48px;
+    background:rgba(6,6,10,0.75);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-logo{font-weight:700;letter-spacing:0.08em;font-size:1.1rem;}
+  .nav-links{display:flex;align-items:center;gap:36px;font-size:.85rem;letter-spacing:.04em;}
+  .nav-links a{opacity:.8;transition:opacity .25s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    border:1px solid #ef4444;padding:10px 22px;border-radius:2px;
+    font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;
+    transition:background .3s, color .3s;
+  }
+  .nav-cta:hover{background:#ef4444;color:#06060a;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:300;}
+  .burger span{width:24px;height:2px;background:var(--ink);transition:.3s;}
+
+  @media (max-width:860px){
+    nav{padding:20px 24px;}
+    .nav-links{
+      position:fixed;top:0;right:-100%;height:100vh;width:78%;
+      background:var(--bg-soft);flex-direction:column;justify-content:center;
+      gap:32px;transition:right .4s ease;font-size:1.1rem;
+    }
+    .nav-links.open{right:0;}
+    .burger{display:flex;}
+  }
+
+    /* ============ FOOTER ============ */
+  footer{position:relative;overflow:hidden;}
+  .footer-deco{
+    position:absolute;inset:0;width:100%;height:100%;z-index:0;
+    pointer-events:none;
+  }
+  .footer-deco circle{fill:none;stroke:rgba(239,68,68,.4);stroke-width:1.5;}
+  .footer-deco circle.dashed{stroke-dasharray:6 8;stroke:rgba(255,255,255,.18);}
+  .footer-deco line{stroke:rgba(255,255,255,.14);stroke-width:1;}
+  .footer-deco .plus{stroke:rgba(239,68,68,.5);stroke-width:2;}
+  .footer-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:50px;
+    padding:90px 48px 60px;border-top:1px solid var(--line);
+    position:relative;z-index:1;
+  }
+  .footer-col h4{
+    font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:700;margin-bottom:18px;
+  }
+  .footer-col a{display:block;color:var(--ink-dim);margin-bottom:10px;
+    font-family:var(--font-mono);font-size:.85rem;transition:color .25s;}
+  .footer-col a:hover{color:var(--red-bright);}
+  .footer-col p{color:var(--ink-dim);font-size:.85rem;line-height:1.6;margin-bottom:20px;max-width:320px;}
+  .newsletter-form{display:flex;gap:10px;flex-wrap:wrap;}
+  .newsletter-form input{
+    flex:1;min-width:160px;background:var(--bg-soft);border:1px solid var(--line);
+    color:var(--ink);font-family:var(--font-mono);font-size:.85rem;
+    padding:13px 16px;border-radius:2px;outline:none;
+  }
+  .newsletter-form input:focus{border-color:#ef4444;}
+  .newsletter-form button{
+    background:#ef4444;color:#06060a;border:none;cursor:pointer;
+    font-family:var(--font-mono);font-size:.8rem;letter-spacing:.04em;
+    padding:13px 24px;border-radius:2px;transition:opacity .25s;
+  }
+  .newsletter-form button:hover{opacity:.85;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:16px;padding:28px 48px;
+    border-top:1px solid rgba(255,255,255,.18);
+    font-family:var(--font-mono);font-size:.75rem;color:var(--ink-dim);
+    position:relative;z-index:1;
+    background:var(--bg);
+  }
+  .footer-col .socials{
+    display:flex;align-items:center;gap:12px;
+    color:var(--ink) !important;transition:opacity .25s;
+    margin-top:6px;
+  }
+  .footer-col .socials:hover{opacity:.8;color:var(--ink) !important;}
+  .socials-label{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.03em;}
+  .socials-icon{
+    width:40px;height:40px;border-radius:50%;background:#fff;color:#0a0a10;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .socials-icon svg{width:20px;height:20px;}
+  .footer-bottom .credit a{color:var(--red-bright);}
+  .legal-links{margin-left:14px;white-space:nowrap;}
+  .legal-links a{color:var(--ink-dim);transition:color .25s;}
+  .legal-links a:hover{color:var(--red-bright);}
+  @media (max-width:860px){ .legal-links{display:block;margin:10px 0 0;} }
+  .haus-logo{
+    font-family:var(--font-serif);font-style:italic;font-weight:400;
+    font-size:1.05rem;letter-spacing:.01em;
+  }
+  @media (max-width:860px){
+    .footer-grid{grid-template-columns:1fr;gap:40px;padding:70px 24px 40px;}
+    .footer-bottom{padding:24px;flex-direction:column;text-align:center;}
+  }
+
+
+  /* ============ PÁGINAS LEGALES ============ */
+  .legal{max-width:760px;margin:0 auto;padding:170px 48px 110px;}
+  .legal-eyebrow{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;color:var(--red-bright);text-transform:uppercase;margin-bottom:18px;}
+  .legal h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:600;line-height:1.05;letter-spacing:-0.01em;margin-bottom:56px;}
+  .legal h2{font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:44px 0 14px;padding-top:28px;border-top:1px solid var(--line);}
+  .legal h2::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red-bright);margin-right:12px;vertical-align:middle;}
+  .legal p{color:var(--ink-dim);line-height:1.85;font-size:1rem;}
+  .legal a{color:var(--red-bright);}
+  @media (max-width:860px){ .legal{padding:130px 24px 80px;} }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav id="nav">
+  <a href="/" class="nav-logo">THE BOW</a>
+  <div class="nav-links" id="navLinks">
+    <a href="/#evento">Próximo evento</a>
+    <a href="/#experiencia">Experiencia</a>
+    <a href="/#ubicacion">Ubicación</a>
+    <a href="https://linktr.ee/thebowclub" target="_blank" rel="noopener" class="nav-cta">Entradas</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<main class="legal">
+  <div class="legal-eyebrow">Privacidad</div>
+  <h1>Política de privacidad</h1>
+  <h2>Responsable del tratamiento</h2>
+  <p>The Bow, a través del sitio web clubthebow.com, es responsable del tratamiento de los datos personales que los usuarios proporcionen voluntariamente.</p>
+  <h2>Datos recopilados</h2>
+  <p>El sitio puede recopilar direcciones de correo electrónico a través del formulario de suscripción al newsletter, con el único fin de enviar información sobre próximos eventos y novedades de The Bow.</p>
+  <h2>Finalidad</h2>
+  <p>Los datos recopilados serán utilizados exclusivamente para el envío de comunicaciones relacionadas con la actividad de The Bow. No serán cedidos, vendidos ni compartidos con terceros.</p>
+  <h2>Derechos del titular</h2>
+  <p>De acuerdo con la Ley 25.326 de Protección de Datos Personales de la República Argentina, los usuarios tienen derecho a acceder, rectificar y suprimir sus datos personales. Para ejercer estos derechos, los usuarios pueden solicitarlo a través del formulario de contacto del sitio.</p>
+  <h2>Conservación de datos</h2>
+  <p>Los datos serán conservados mientras el usuario mantenga su suscripción activa. El usuario puede darse de baja en cualquier momento.</p>
+  <h2>Legislación aplicable</h2>
+  <p>Esta política se rige por la Ley 25.326 de Protección de Datos Personales de la República Argentina.</p>
+</main>
+
+<footer>
+  <svg class="footer-deco" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="1080" cy="60" r="170" />
+    <circle cx="80" cy="430" r="200" />
+    <circle class="dashed" cx="1000" cy="420" r="90" />
+    <line x1="0" y1="120" x2="1200" y2="40" />
+    <line x1="0" y1="380" x2="1200" y2="440" />
+    <g class="plus" stroke-linecap="round">
+      <line x1="200" y1="80" x2="200" y2="104" />
+      <line x1="188" y1="92" x2="212" y2="92" />
+    </g>
+    <g class="plus" stroke-linecap="round">
+      <line x1="650" y1="450" x2="650" y2="474" />
+      <line x1="638" y1="462" x2="662" y2="462" />
+    </g>
+  </svg>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="https://wearebombo.com" target="_blank" rel="noopener">Descargá la app Bombo</a>
+      <!-- 📝 PERSONALIZAR: confirmar/actualizar el link de la carpeta de fotos -->
+      <a href="https://drive.google.com/drive/folders/1XTBpQcZgGSW_Yug0AYUZiAZfrfu-ZLNM" target="_blank" rel="noopener">Mirá todas las fotos</a>
+      <a class="socials" href="https://www.instagram.com/clubthebowba/" target="_blank" rel="noopener" aria-label="Instagram">
+        <span class="socials-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </span>
+        <span class="socials-label">Seguinos en Instagram</span>
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Sumate a la lista</h4>
+      <!-- 📝 Netlify Forms: activar en el panel de Netlify una vez deployado -->
+      <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+        <input type="hidden" name="form-name" value="newsletter">
+        <input type="email" name="email" placeholder="Tu email" required>
+        <button type="submit">Sumarme</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="copyright">© THE BOW. Todos los derechos reservados. <span class="legal-links"><a href="/aviso-legal.html">Aviso legal</a> · <a href="/politica-privacidad.html">Política de privacidad</a></span></div>
+    <div class="credit">by <a href="https://hausstudio.online/" target="_blank" class="haus-logo">HAUS.</a></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>

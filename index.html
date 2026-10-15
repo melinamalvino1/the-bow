@@ -400,6 +400,10 @@
   }
   .socials-icon svg{width:20px;height:20px;}
   .footer-bottom .credit a{color:var(--red-bright);}
+  .legal-links{margin-left:14px;white-space:nowrap;}
+  .legal-links a{color:var(--ink-dim);transition:color .25s;}
+  .legal-links a:hover{color:var(--red-bright);}
+  @media (max-width:860px){ .legal-links{display:block;margin:10px 0 0;} }
   .haus-logo{
     font-family:var(--font-serif);font-style:italic;font-weight:400;
     font-size:1.05rem;letter-spacing:.01em;
@@ -594,7 +598,7 @@
   </div>
 
   <div class="footer-bottom">
-    <div class="copyright">© THE BOW. Todos los derechos reservados.</div>
+    <div class="copyright">© THE BOW. Todos los derechos reservados. <span class="legal-links"><a href="/aviso-legal.html">Aviso legal</a> · <a href="/politica-privacidad.html">Política de privacidad</a></span></div>
     <div class="credit">by <a href="https://hausstudio.online/" target="_blank" class="haus-logo">HAUS.</a></div>
   </div>
 </footer>
