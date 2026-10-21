@@ -75,6 +75,7 @@
     {
       "flyer": "/eventos/imagenes/sasha-storie.png",
       "mes_num": "01",
+      "horario": "23:59 A 07:00",
       "sold_out": false,
       "artistas": "Nicolás Rada",
       "titulo": "Sasha",
