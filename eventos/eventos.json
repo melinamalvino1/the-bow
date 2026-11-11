@@ -1,18 +1,6 @@
 {
   "eventos": [
     {
-      "flyer": "/eventos/imagenes/emi-antrim.png",
-      "mes_num": "11",
-      "horario": "23:59 A 07:00",
-      "sold_out": false,
-      "artistas": "OPEN CALL",
-      "titulo": "Emi Galván & Antrim",
-      "mes": "NOV",
-      "dia": "7",
-      "entradas": "https://wearebombo.app.link/1s6XZK9L65b",
-      "fecha": "7/11/2026"
-    },
-    {
       "flyer": "/eventos/imagenes/history-8.png",
       "mes_num": "2026",
       "horario": "23:59 A 07:00",
@@ -37,7 +25,7 @@
       "fecha": "21/11/2025"
     },
     {
-      "flyer": "/eventos/imagenes/history.png",
+      "flyer": "/eventos/imagenes/img_8528.png",
       "mes_num": "2026",
       "horario": "23:59 A 07:00 HS",
       "sold_out": false,
