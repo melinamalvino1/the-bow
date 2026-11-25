@@ -1,18 +1,6 @@
 {
   "eventos": [
     {
-      "flyer": "/eventos/imagenes/2-story-estatico.jpg",
-      "mes_num": "11",
-      "horario": "23:59 A 07:00",
-      "sold_out": false,
-      "artistas": "TBA",
-      "titulo": "POPOF ",
-      "mes": "NOV",
-      "dia": "21",
-      "entradas": "https://wearebombo.app.link/dpgDPqoVD6b",
-      "fecha": "21/11/2025"
-    },
-    {
       "flyer": "/eventos/imagenes/img_8528.png",
       "mes_num": "2026",
       "horario": "23:59 A 07:00 HS",
